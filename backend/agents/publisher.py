@@ -7,10 +7,12 @@ class PublisherAgent:
 
     def save_newspaper_html(self, newspaper_html):
         path = os.path.join(self.output_dir, "newspaper.html")
-        with open(path, 'w') as file:
+        with open(path, "w") as file:
             file.write(newspaper_html)
         return path
 
     def run(self, newspaper_html: str):
+        print("PublisherAgent start")
         newspaper_path = self.save_newspaper_html(newspaper_html)
+        print("PublisherAgent end")
         return newspaper_path

@@ -1,10 +1,10 @@
 import os
 import re
 
+
 class DesignerAgent:
     def __init__(self, output_dir):
         self.output_dir = output_dir
-
 
     def load_html_template(self):
         relative_path = "../templates/article/index.html"
@@ -30,14 +30,16 @@ class DesignerAgent:
         return article
 
     def save_article_html(self, article):
-        filename = re.sub(r'[\/:*?"<>| ]', '_', article['query'])
+        filename = re.sub(r'[\/:*?"<>| ]', "_", article["query"])
         filename = f"{filename}.html"
         path = os.path.join(self.output_dir, filename)
-        with open(path, 'w') as file:
-            file.write(article['html'])
+        with open(path, "w") as file:
+            file.write(article["html"])
         article["path"] = filename
         return article
 
     def run(self, article: dict):
+        print("DesignerAgent start")
         article = self.designer(article)
+        print("DesignerAgent end")
         return article

@@ -18,7 +18,9 @@ class SearchAgent:
         return sources, image
 
     def run(self, article: dict):
+        print("SearchAgent start")
         res = self.search_tavily(article["query"])
         article["sources"] = res[0]
         article["image"] = res[1]
+        print("SearchAgent end")
         return article

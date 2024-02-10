@@ -26,12 +26,13 @@ article_templates = {
     """,
 }
 
+
 class EditorAgent:
     def __init__(self, layout):
         self.layout = layout
 
     def load_html_template(self):
-        template_path = os.path.join(os.path.dirname(__file__), '..', 'templates', 'newspaper', 'layouts', self.layout)
+        template_path = os.path.join(os.path.dirname(__file__), "..", "templates", "newspaper", "layouts", self.layout)
         with open(template_path) as f:
             return f.read()
 
@@ -56,5 +57,7 @@ class EditorAgent:
         return newspaper_html
 
     def run(self, articles):
+        print("EditorAgent start")
         res = self.editor(articles)
+        print("EditorAgent end")
         return res
